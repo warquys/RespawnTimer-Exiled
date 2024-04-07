@@ -8,6 +8,7 @@
 #if EXILED
     using Exiled.API.Features;
     using Exiled.Events.EventArgs.Player;
+    using Respawning;
 #else
     using Utils.NonAllocLINQ;
     using Hints;
@@ -108,6 +109,10 @@
             while (true)
             {
                 yield return Timing.WaitForSeconds(1f);
+
+                if (!RespawnTimer.Singleton.Config.ShowTimerIfRespawnDisabled 
+                    && float.IsInfinity(RespawnManager.Singleton._timeForNextSequence))
+                    continue;
 #if EXILED
                 int specNum = Player.List.Count(x => !x.IsAlive || x.SessionVariables.ContainsKey("IsGhost"));
                 foreach (Player player in Player.List)
