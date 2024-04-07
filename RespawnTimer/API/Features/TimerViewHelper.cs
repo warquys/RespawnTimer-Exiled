@@ -41,8 +41,16 @@ public partial class TimerView
 
     public void SetMinutesAndSeconds()
     {
-        TimeSpan time = TimeSpan.FromSeconds(RespawnManager.Singleton._timeForNextSequence - RespawnManager.Singleton._stopwatch.Elapsed.TotalSeconds);
+        var delta = RespawnManager.Singleton._timeForNextSequence - RespawnManager.Singleton._stopwatch.Elapsed.TotalSeconds;
+        if (double.IsInfinity(delta))
+        {
+            StringBuilder.Replace("{minutes}", "∞");
+            StringBuilder.Replace("{seconds}", "0");
+            return;
+        }
 
+        TimeSpan time = TimeSpan.FromSeconds(delta);
+        
         if (RespawnManager.Singleton._curSequence is RespawnManager.RespawnSequencePhase.PlayingEntryAnimations or RespawnManager.RespawnSequencePhase.SpawningSelectedTeam ||
             !Properties.TimerOffset)
         {

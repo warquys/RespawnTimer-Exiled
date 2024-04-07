@@ -30,5 +30,8 @@
 
         [Description("The delay before the timer will be shown after player death.")]
         public float TimerDelay { get; private set; } = -1;
+
+        [Description("Wether the timer should be show if the respawn are disable.")]
+        public bool ShowTimerIfRespawnDisabled { get; set; } = true;
     }
 }
