@@ -148,6 +148,6 @@
 
         public List<string> Hints { get; }
 
-        private readonly StringBuilder StringBuilder = new(1024);
+        public readonly StringBuilder StringBuilder = new(1024);
     }
 }

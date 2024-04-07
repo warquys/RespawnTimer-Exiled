@@ -29,7 +29,7 @@ public partial class TimerView
         SetHint();
     }
 
-    private void SetRoundTime()
+    public void SetRoundTime()
     {
         
         int minutes = RoundStart.RoundLength.Minutes;
@@ -39,7 +39,7 @@ public partial class TimerView
         StringBuilder.Replace("{round_seconds}", $"{(Properties.LeadingZeros && seconds < 10 ? "0" : string.Empty)}{seconds}");
     }
 
-    private void SetMinutesAndSeconds()
+    public void SetMinutesAndSeconds()
     {
         TimeSpan time = TimeSpan.FromSeconds(RespawnManager.Singleton._timeForNextSequence - RespawnManager.Singleton._stopwatch.Elapsed.TotalSeconds);
 
@@ -64,7 +64,7 @@ public partial class TimerView
         }
     }
 
-    private void SetSpawnableTeam()
+    public void SetSpawnableTeam()
     {
         switch (Respawn.NextKnownTeam)
         {
@@ -91,7 +91,7 @@ public partial class TimerView
         }
     }
 
-    private void SetSpectatorCountAndSpawnChance(int? spectatorCount = null)
+    public void SetSpectatorCountAndSpawnChance(int? spectatorCount = null)
     {
 #if EXILED
         StringBuilder.Replace("{spectators_num}", spectatorCount?.ToString() ?? Player.List.Count(x => x.Role.Team == Team.Dead && !x.IsOverwatchEnabled).ToString());
@@ -107,7 +107,7 @@ public partial class TimerView
         StringBuilder.Replace("{ci_spawn_chance}", Mathf.Round(RespawnTokensManager.Counters[0].Amount).ToString());
     }
 
-    private void SetWarheadStatus()
+    public void SetWarheadStatus()
     {
 #if EXILED
         WarheadStatus warheadStatus = Warhead.Status;
@@ -122,7 +122,7 @@ public partial class TimerView
 #endif
     }
 
-    private void SetGeneratorCount()
+    public void SetGeneratorCount()
     {
         /*
         int generatorEngaged = 0;
@@ -143,13 +143,13 @@ public partial class TimerView
         StringBuilder.Replace("{generator_count}", "3");
     }
 
-    private void SetTpsAndTickrate()
+    public void SetTpsAndTickrate()
     {
         StringBuilder.Replace("{tps}", Math.Round(1.0 / Time.smoothDeltaTime).ToString(CultureInfo.InvariantCulture));
         StringBuilder.Replace("{tickrate}", Application.targetFrameRate.ToString());
     }
 
-    private void SetHint()
+    public void SetHint()
     {
         if (!Hints.Any())
             return;
