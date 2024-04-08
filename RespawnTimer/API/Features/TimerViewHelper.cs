@@ -17,7 +17,7 @@ using Exiled.API.Features;
 
 public partial class TimerView
 {
-    private void SetAllProperties(int? spectatorCount = null)
+    public void SetAllProperties(int? spectatorCount = null)
     {
         SetRoundTime();
         SetMinutesAndSeconds();
