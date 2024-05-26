@@ -11,7 +11,7 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <Configurations>EXILED;NWAPI</Configurations>
         <Platforms>AnyCPU</Platforms>
-    </PropertyGroup>
+	</PropertyGroup>
     
     <PropertyGroup Condition=" '$(Configuration)' == 'NWAPI' ">
         <TargetName>RespawnTimer-NW</TargetName>
@@ -31,10 +31,10 @@
         <Reference Include="NorthwoodLib" HintPath="$(SL_REFERENCES)\NorthwoodLib.dll" />
         <Reference Include="CommandSystem.Core" HintPath="$(SL_REFERENCES)\CommandSystem.Core.dll" />
     </ItemGroup>
-
+    
     <ItemGroup>
         <PackageReference Condition=" '$(Configuration)' == 'EXILED' " Include="EXILED" Version="8.6.0" />
         <PackageReference Condition=" '$(Configuration)' == 'NWAPI' " Include="Northwood.PluginAPI" Version="13.1.2" />
     </ItemGroup>
-
+	
 </Project>
