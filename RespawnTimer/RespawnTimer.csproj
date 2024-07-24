@@ -33,7 +33,7 @@
     </ItemGroup>
     
     <ItemGroup>
-        <PackageReference Condition=" '$(Configuration)' == 'EXILED' " Include="EXILED" Version="9.0.0-alpha.2" />
+        <PackageReference Condition=" '$(Configuration)' == 'EXILED' " Include="EXILED" Version="8.9.8" />
         <PackageReference Include="EXILED" Condition="'$(Configuration)'=='UncompSoundSUpported_Release'">
           <Version>8.6.0</Version>
         </PackageReference>
